@@ -1,0 +1,6 @@
+language: java
+script: mvn clean compile -DskiptTests
+notifications:
+  email:
+    - nvattipalli@uh.edu
+    - rmuppidi@uh.edu
