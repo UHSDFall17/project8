@@ -5,6 +5,10 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class Login {
+	public static void main(String[] args){
+		Login l=new Login();
+		l.login();
+		}
  
 	Scanner scan= new Scanner(System.in);
 	public void login(){
@@ -22,6 +26,7 @@ public class Login {
 		    	System.out.println("Login Successfull");
 		    else
 		    	System.out.println("Invalid !! ");
+		    	
 		    conn.close();
 		    
 		}
