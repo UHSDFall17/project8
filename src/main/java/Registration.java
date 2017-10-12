@@ -35,9 +35,10 @@ public class Registration {
 			if(ConfirmPassword.length()==0)
 				Validate(5);
 			
-			if(!ConfirmPassword.equals(Password)){
+			if(!(ConfirmPassword.equals(Password))){
 				Validate(6);
 				x="Passwords don't match!";
+				
 			}
 			
 			
@@ -52,7 +53,7 @@ public class Registration {
 		}
 		return x;
 	}
-	private boolean checkNameRegularExpression(String username) {
+	public boolean checkNameRegularExpression(String username) {
 		String reg_name="[a-zA-Z]+";
 		Boolean b=username.matches(reg_name);
 		return b;

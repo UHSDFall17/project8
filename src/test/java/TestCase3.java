@@ -5,10 +5,10 @@ import org.junit.Test;
 public class TestCase3 {
 
 	@Test
-	public void Register_PwdMismatch() {
+	public void Register_checkName() {
 		Registration reg=new Registration();
-		String result=reg.Register();
-		assertEquals("Passwords don't match!",result);
+		Boolean result=reg.checkNameRegularExpression("ro");
+		assertEquals(true,result);
 	}
 
 }
