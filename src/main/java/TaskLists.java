@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 
-public class List {
+public class TaskLists {
 
 	String ListTitle;
 	int ListNumber=0;
 	ArrayList<Card> ListofCards=new ArrayList<Card>();
 	
-	public List(String Title){
+	public TaskLists(String Title){
 		this.ListTitle=Title;
 	}
 	public void addCardToList(Card card){

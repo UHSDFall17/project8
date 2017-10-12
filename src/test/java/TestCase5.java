@@ -6,8 +6,8 @@ public class TestCase5 {
 
 	@Test
 	public void Welcome_Invalidinput() {
-		Welcome w=new Welcome();
-		String result=w.welcome();
+		Main m=new Main();
+		String result=m.welcome();
 		assertEquals("Invalid",result);
 	}
 
