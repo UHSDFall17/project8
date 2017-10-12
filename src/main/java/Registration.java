@@ -24,7 +24,7 @@ public class Registration {
 			String Email=scan.nextLine();
 			if(Email.length()==0)
 				Validate(2);
-			if(checkEmailRegularExpression(Email))
+			if(!checkEmailRegularExpression(Email))
 				Validate(3);
 			System.out.println("Enter Password ");
 			String Password=scan.nextLine();
@@ -54,7 +54,7 @@ public class Registration {
 		return x;
 	}
 	public boolean checkNameRegularExpression(String username) {
-		String reg_name="[a-zA-Z]+";
+		String reg_name="[a-zA-Z0-9]+";
 		Boolean b=username.matches(reg_name);
 		return b;
 	}
@@ -86,7 +86,7 @@ public class Registration {
 		
 	}
 	private boolean checkEmailRegularExpression(String Email){
-		String reg_email="";
+		String reg_email="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
 		boolean b = Email.matches(reg_email);
 		return b;
 		
