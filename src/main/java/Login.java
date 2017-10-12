@@ -5,13 +5,9 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class Login {
-	public static void main(String[] args){
-		Login l=new Login();
-		l.login();
-		}
- 
 	Scanner scan= new Scanner(System.in);
-	public void login(){
+	public String login( ){
+		String x=" ";
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/Trello","root","root");
@@ -23,9 +19,9 @@ public class Login {
 			Statement s = conn.createStatement();
 		    ResultSet rs=s.executeQuery(parameters);	
 		    if(rs.next())
-		    	System.out.println("Login Successfull");
+		    	x="Login Successfull!";
 		    else
-		    	System.out.println("Invalid !! ");
+		    	 x= "Invalid !! ";
 		    	
 		    conn.close();
 		    
@@ -33,6 +29,7 @@ public class Login {
 		catch(Exception e){
 			System.out.println(e);
 		}
+	return x;
 		
 	}
 	

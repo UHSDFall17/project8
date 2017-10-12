@@ -8,7 +8,8 @@ public class Registration {
 	public static void main(String[] args){
 		
 	}
-	public void Register(){
+	public String Register(){
+	String x=" ";
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/Trello","root","root");
@@ -34,16 +35,22 @@ public class Registration {
 			if(ConfirmPassword.length()==0)
 				Validate(5);
 			
-			if(!ConfirmPassword.equals(Password))
+			if(!ConfirmPassword.equals(Password)){
 				Validate(6);
-			String parameters="Insert into Users (Username, Email, Password, ConfirmPassword)";
+				x="Passwords don't match!";
+			}
+			
+			
+			String parameters="Insert into Users (Username, Email, Password, ConfirmPassword)"  + "VALUES ('" +Username+ "', '" +Email+"','" +Password+"','"+ ConfirmPassword+"')";
 			Statement s = conn.createStatement();
-			s.executeUpdate(parameters);	
+			s.executeUpdate(parameters);
+			x="Registration Successfull!!";
 			scan.close();
 		}
 		catch(Exception e){
 			System.out.println(e);
 		}
+		return x;
 	}
 	private boolean checkNameRegularExpression(String username) {
 		String reg_name="[a-zA-Z]+";
@@ -68,9 +75,9 @@ public class Registration {
 		Register();
 		break;
 	    case 6:System.out.println("Passwords don't match!");
-		Register();
+		/*Register();*/
 		break;
-	    case 7:System.out.println("Name is valid!");
+	    case 7:System.out.println("Name is invalid!");
 		Register();
 		break;
 		}
