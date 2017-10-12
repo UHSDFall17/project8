@@ -85,7 +85,7 @@ public class Registration {
 		
 	}
 	private boolean checkEmailRegularExpression(String Email){
-		String reg_email="^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
+		String reg_email="";
 		boolean b = Email.matches(reg_email);
 		return b;
 		
