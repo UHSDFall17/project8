@@ -4,6 +4,7 @@ public class Main {
 	public static void main(String[] args)
 	{
 		welcome();
+		
 	}
 	public static String welcome(){
 		String x=" ";
@@ -15,6 +16,8 @@ public class Main {
 	{
 	Login l=new Login();
 	l.login();
+	Board b=new Board();
+	b.board();
 	}
 	else if(input.equalsIgnoreCase("no")){
 		Registration reg=new Registration();
