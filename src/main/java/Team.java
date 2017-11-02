@@ -17,7 +17,7 @@ public class Team {
 		Scanner inputReader = new Scanner (System.in);
 		System.out.println("Please enter Team Name:");
 		 teamname  = inputReader.nextLine();
-		System.out.println("Please enter Team Description(optional):");
+		System.out.println("Please enter Team Description:");
 	      teamdesc  = inputReader.nextLine();
 	      inputReader.close();
 	}
@@ -32,15 +32,14 @@ public class Team {
 			Statement s = null;
 		
 		Scanner inputReader = new Scanner (System.in);
-		System.out.println("Press 1. for team /n Press 2. for business team ");
+		System.out.println("Press 1 for team /n Press 2 for business team ");
 		int option = inputReader.nextInt();
 		if (option == 1) 
 		{
 			System.out.println("---Create Team---");
 			getInput();
-		    System.out.println(".............");
 			 values = "INSERT INTO team (team_name,team_desc) " + "VALUES ('" +teamname+ "', '" +teamdesc+"')";
-			 System.out.println("end");
+			 
 		}
 		
 		else if (option == 2) {
@@ -51,7 +50,7 @@ public class Team {
 		}
 		s = conn.createStatement();
 		s.executeUpdate(values);  
-		System.out.println(teamname + "Team created Successfully");
+		System.out.println(teamname + " Team created Successfully");
 		inputReader.close();
 		}
 		catch(Exception e){ System.out.println(e);} 
