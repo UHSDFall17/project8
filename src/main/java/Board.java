@@ -21,19 +21,19 @@ public class Board {
      public void board() {
     		Scanner inputReader = new Scanner (System.in);
     		
-    		System.out.println("Create Board \n Enter board title");
+    		System.out.println("Creeate Board \n Enter the title of the board");
     		String title = inputReader.nextLine();
     		try {
     				Class.forName("com.mysql.jdbc.Driver");
     				Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/Trello","root","root");
-    				String parameters="Select team_name";
+    				String parameters="Select team_name from team";
     				Statement s = conn.createStatement();
     		ResultSet rs=s.executeQuery(parameters);
     		if(rs.next() != true) {
-    			System.out.println("There are no teams,Do you wish to create one?");
+    			System.out.println("There are no teams,Do you wish to create one");
     		}
     		else {
-    		System.out.println("Would you like to select team for the Board \n Enter 'yes' to select team \n Enter 'no' to proceed further ");
+    		System.out.println("Would you like to select the team for the Board \n Type 'yes' to select team \n Type 'no' to proceed further ");
     		}
     		String input = inputReader.nextLine();
     		if(input.equals("yes")) {
