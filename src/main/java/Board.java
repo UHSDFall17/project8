@@ -33,7 +33,7 @@ public class Board {
     			System.out.println("There are no teams,Do you wish to create one");
     		}
     		else {
-    		System.out.println("Would you like to select the team for the Board \n Type 'yes' to select team \n Type 'no' to proceed further ");
+    		System.out.println("Would you like to select the team for the Board \n Type 'yes' to select team \n Type 'no' to proceed without selection ");
     		}
     		String input = inputReader.nextLine();
     		if(input.equals("yes")) {
