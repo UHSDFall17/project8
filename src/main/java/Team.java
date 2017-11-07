@@ -33,7 +33,7 @@ public class Team {
    Statement s = null;
   
   Scanner inputReader = new Scanner (System.in);
-  System.out.println("Press 1 for team /n Press 2 for business team ");
+  System.out.println("Press 1 to create team /n Press 2 to create business team ");
   int option = inputReader.nextInt();
   if (option == 1)
   {
@@ -59,7 +59,7 @@ public class Team {
  public void addMembersToTeam()
  {  
   ArrayList<String> members = new ArrayList<String>(); 
-   System.out.println("Press/n 1.Team /n  2.Business Team ");
+   System.out.println("Press/n 1.to add members to Team /n  Press 2. to add members to Business Team ");
    int input = inputReader.nextInt();
    inputReader.nextLine(); 
    System.out.println("Enter Team Name:");
