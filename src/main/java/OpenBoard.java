@@ -9,11 +9,18 @@ public class OpenBoard {
 		String input = inputReader.nextLine();
 		if(input.equals("yes"))
 		{
-			
+			System.out.println("Please enter the board name that you want to open");
+			boardname = inputReader.nextLine();
+			boardOpen(boardname);
 		}
 		else
 		{
 			
 		}
+	}
+	
+	public void boardOpen(String boardname2)
+	{
+		
 	}
 }
