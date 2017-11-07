@@ -59,7 +59,7 @@ public class Team {
  public void addMembersToTeam()
  {  
   ArrayList<String> members = new ArrayList<String>(); 
-   System.out.println("Press/n 1.General Team /n  2.Business Team ");
+   System.out.println("Press/n 1.Team /n  2.Business Team ");
    int input = inputReader.nextInt();
    inputReader.nextLine(); 
    System.out.println("Enter Team Name:");
@@ -69,7 +69,7 @@ public class Team {
    membername  = inputReader.nextLine();
          members.add(membername); 
          addToDatabase(membername,teamName,input);
-    System.out.println("Members added to the team");
+    System.out.println("Members added to the team successfully!");
    
   }
 
