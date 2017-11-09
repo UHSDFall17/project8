@@ -21,7 +21,7 @@ public class Board {
      public void board() {
     		Scanner inputReader = new Scanner (System.in);
     		
-    		System.out.println("Creeate Board \n Enter the title of the board");
+    		System.out.println("Create Board \n Enter the title of the board");
     		String title = inputReader.nextLine();
     		try {
     				Class.forName("com.mysql.jdbc.Driver");
