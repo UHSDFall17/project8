@@ -42,7 +42,7 @@ public class Registration {
 			}
 			
 			
-			String parameters="Insert into Users (Username, Email, Password, ConfirmPassword)"  + "VALUES ('" +Username+ "', '" +Email+"','" +Password+"','"+ ConfirmPassword+"')";
+			String parameters="Insert into Users (Username, Email, Password, ConfirmPassword)"  + "VALUES ('" +Username+ "', '" +Email+"','" +Password+"','"+Password+"')";
 			Statement s = conn.createStatement();
 			s.executeUpdate(parameters);
 			x="Registration Successfull!!";

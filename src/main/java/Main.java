@@ -9,7 +9,7 @@ public class Main {
 	public static String welcome(){
 		String x=" ";
 	System.out.println("welcome to trello \n");
-	System.out.println("Already Registered? (Yes/No)");
+	System.out.println("Already Registered? (Yes/No) or enter reset for password reset");
 	Scanner s = new Scanner(System.in);
 	String input=s.nextLine();
 	if(input.equalsIgnoreCase("yes"))
@@ -22,6 +22,10 @@ public class Main {
 	else if(input.equalsIgnoreCase("no")){
 		Registration reg=new Registration();
 		reg.Register();
+	}
+	else if (input.equalsIgnoreCase("reset")){
+		Login l1 = new Login();
+		l1.ForgotPassword();
 	}
 	else{
 		x="Invalid";

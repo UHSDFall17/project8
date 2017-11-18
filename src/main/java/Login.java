@@ -38,7 +38,7 @@ public class Login {
 		ForgotPassword();
 	}
 
-	private void ForgotPassword() {
+	public void ForgotPassword() {
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/Trello","root","root");
@@ -50,11 +50,20 @@ public class Login {
 		    if(rs.next()){
 		    	System.out.println("Enter a new password");
 		    	String Password=scan.nextLine();
-		    	parameters="Update Users(Username, Password) " + "VALUES ('" +Username+ "', '" +Password+ "')";
+		    	System.out.println("done");
+		    	parameters="Update Users set Password = '"+Password+"'" + ", ConfirmPassword = '"+Password+"'"  + "where Username = '"+Username+"'";
+		    	System.out.println("done update");
 		    	s.executeUpdate(parameters);
 		    	System.out.println("Updated successfully!!");
 		    	conn.close();
-		    	login();
+		    	System.out.println("Do you want to login into Trello(yes/no)?");
+		    	Scanner scan = new Scanner(System.in);
+		    	String input=scan.nextLine();
+		    	if(input.equalsIgnoreCase("yes")){
+		    		login();
+		    	}
+		    	else
+		    		System.out.println("You have not entered into Trello. Thank You!");
 		    }
 		    else
 		    	Reset();	
