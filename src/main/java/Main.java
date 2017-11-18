@@ -7,7 +7,7 @@ public class Main {
 		welcome();
 		
 	}
-	public static String welcome(){
+	public static void welcome(){
 		System.out.println("Choose Options \n");
 		System.out.println("Enter 1 to Login\n Enter 2 to Register\n Enter 3 for Password Reset\n Enter 4 for FAQs\n Enter 5 to Exit\n");
 		Scanner scan = new Scanner(System.in);
