@@ -34,7 +34,9 @@ public class Information {
 			}
 			break;
 		case 3:
-			
+			System.out.println("User has to enter username/ email and valid password to login\n");
+			Login l=new Login();
+			l.login();
 			break;
 		case 4:
 			
