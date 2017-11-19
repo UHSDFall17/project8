@@ -39,7 +39,9 @@ public class Information {
 			l.login();
 			break;
 		case 4:
-			
+			System.out.println("Going back to appropriate page to reset password\n");
+			Login l1 = new Login();
+			l1.ForgotPassword();
 			break;
 		default:
 			
