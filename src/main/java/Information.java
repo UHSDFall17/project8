@@ -50,5 +50,6 @@ public class Information {
 			
 			break;
 		}
+		scan.close();
 	}
 }
