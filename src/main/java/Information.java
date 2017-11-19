@@ -32,6 +32,9 @@ public class Information {
 				System.out.println("Going back to information.\n");
 				help();
 			}
+			else{
+				System.out.println("Invalid input.\n");
+			}
 			break;
 		case 3:
 			System.out.println("User has to enter username/ email and valid password to login\n");
