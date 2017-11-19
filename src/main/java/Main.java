@@ -3,11 +3,12 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args)
 	{
-		System.out.println("welcome to trello \n");
+		
 		welcome();
 		
 	}
 	public static void welcome(){
+		System.out.println("welcome to trello \n");
 		System.out.println("Choose Options \n");
 		System.out.println("Enter 1 to Login\n Enter 2 to Register\n Enter 3 for Password Reset\n Enter 4 for Information\n Enter 5 to Exit\n");
 		Scanner scan = new Scanner(System.in);
