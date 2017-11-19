@@ -51,7 +51,7 @@ public class Login {
 		    	System.out.println("Enter a new password");
 		    	String Password=scan.nextLine();
 		    	System.out.println("done");
-		    	parameters="Update Users set Password = '"+Password+"'" + ", ConfirmPassword = '"+Password+"'"  + "where Username = '"+Username+"'";
+		    	parameters="Update Users set Password = '"+Password+"'"  + "where Username = '"+Username+"'";
 		    	System.out.println("done update");
 		    	s.executeUpdate(parameters);
 		    	System.out.println("Updated successfully!!");
