@@ -10,7 +10,7 @@ public class Information {
 		System.out.println("2.) How can I register to Trello?");
 		System.out.println("3.) How can I login into Trello?");
 		System.out.println("4.) How can I reset my password?");
-		System.out.println("Enter a number for the question that you wish to view: ");
+		System.out.println("Enter the question number for which you wish to view the answer: ");
 		checkAnswers(scan.nextInt());
 		scan.close();
 	}
