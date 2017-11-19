@@ -35,7 +35,9 @@ public class Main {
  		default:
  			System.out.println("Invalid Option selected!");
 		}
+		scan.close();
 			
 	}
+	
 
 }
