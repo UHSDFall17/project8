@@ -22,7 +22,7 @@ public class Information {
 			help();
 			break;
 		case 2:
-			System.out.println("Users have to provide username, email and password to register to Trello.\n" + "Do you want to register now(yes/no)? : ");
+			System.out.println("User has to provide username, email and password to register to Trello.\n" + "Do you want to register now(yes/no)? : ");
 			String inp = scan.next();
 			if(inp.equalsIgnoreCase("yes")) {
 				Registration reg=new Registration();
