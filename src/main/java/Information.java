@@ -28,7 +28,7 @@ public class Information {
 				Registration reg=new Registration();
 				reg.Register();
 			}
-			else {
+			else if (inp.equalsIgnoreCase("no")){
 				System.out.println("Going back to information.\n");
 				help();
 			}
