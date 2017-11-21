@@ -46,6 +46,7 @@ public class Registration {
 			Statement s = conn.createStatement();
 			s.executeUpdate(parameters);
 			x="Registration Successfull!!";
+			System.out.println("Registration Successfull!!");
 			scan.close();
 		}
 		catch(Exception e){

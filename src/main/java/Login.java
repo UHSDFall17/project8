@@ -17,11 +17,17 @@ public class Login {
 			String Password=scan.nextLine();
 			String parameters="Select Username, Password from Users where Username = '"+Username+"' and Password = '"+Password+"'";
 			Statement s = conn.createStatement();
-		    ResultSet rs=s.executeQuery(parameters);	
+		    ResultSet rs=s.executeQuery(parameters);
 		    if(rs.next())
+		    {
 		    	x="Login Successfull!";
+		    	System.out.println("Login Successful!");
+		    }
 		    else
+		    {
 		    	 x= "Invalid !! ";
+		    	 System.out.println("Invalid");
+		    }
 		    	
 		    conn.close();
 		    
