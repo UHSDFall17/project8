@@ -27,6 +27,7 @@ public class Board {
     				Class.forName("com.mysql.jdbc.Driver");
     				Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/Trello","root","root");
     				String parameters="Select team_name from team";
+    				System.out.println(parameters);
     				Statement s = conn.createStatement();
     		ResultSet rs=s.executeQuery(parameters);
     		if(rs.next() != true) {

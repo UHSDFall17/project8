@@ -40,6 +40,12 @@ public class Team {
   case 1:
 	  createTeam();
 	  break;
+  case 2:
+	  createTeam();
+	  break;
+  case 3:
+	  addMembersToTeam();
+	  break;
   }
   }
   catch(Exception e){ 
@@ -70,6 +76,11 @@ public class Team {
 	  catch(Exception e){ 
 		  System.out.println(e);
 		  }
+  }
+  
+  public void viewTeam()
+  {
+	  
   }
   
  public void addMembersToTeam()
