@@ -28,9 +28,9 @@ switch (user_input) {
 				c.board();
 				break;
 			case 4:
-		/*	ViewBoard vb = new ViewBoard();
+			ViewBoard vb = new ViewBoard();
 						vb.displayBoards();
-		*/
+		
 			case 5:
 			   System.exit(1);
 			   break;
