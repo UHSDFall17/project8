@@ -23,7 +23,7 @@ public class Login {
 		    	x="Login Successfull!";
 		    	System.out.println("Login Successful!");
 		    	 Welcome w=new Welcome();
-		    	 w.Welcome();
+		    	 w.Welcome(Username);
 		    }
 		    else
 		    {

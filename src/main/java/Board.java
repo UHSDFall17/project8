@@ -18,7 +18,7 @@ public class Board {
 		return board.size();
     	 
      }
-     public void board() {
+     public void board(String value) {
     		Scanner inputReader = new Scanner (System.in);
     		
     		System.out.println("Create Board \n Enter the title of the board");
