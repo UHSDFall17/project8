@@ -21,16 +21,21 @@ public class Board {
      public void board(String value) {
     		Scanner inputReader = new Scanner (System.in);
     		
-    		System.out.println("Create Board \n Enter the title of the board");
+    		System.out.println(" \n Enter the title of the board");
     		String title = inputReader.nextLine();
     		try {
     				Class.forName("com.mysql.jdbc.Driver");
     				Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/Trello","root","root");
-    				String parameters="Select team_name from team";
-    				System.out.println(parameters);
+    				String parameters="Insert into board (boardname, star, b_company_name)"  + "VALUES ('" +title+ "','0','" +value+"')";
     				Statement s = conn.createStatement();
-    		ResultSet rs=s.executeQuery(parameters);
-    		if(rs.next() != true) {
+    		s.executeUpdate(parameters);
+    		String parameters1="Select b_team_name from board where boardname= '"+title+"'";
+			Statement s1 = conn.createStatement();
+	ResultSet rs1=s.executeQuery(parameters1);
+	while (rs1.next())
+        value = rs1.getString("b_team_name");
+	 System.out.println(value);
+    		if(rs1.next() != true) {
     			System.out.println("There are no teams,Do you wish to create one");
     		}
     		else {
@@ -38,11 +43,11 @@ public class Board {
     		}
     		String input = inputReader.nextLine();
     		if(input.equals("yes")) {
-    			while(rs.next()) {
-    				System.out.println(rs.getString(1));
+    			while(rs1.next()) {
+    				System.out.println(rs1.getString(1));
     			}
     			Team t = new Team();
-    			t.team();
+    			t.team(title);
     			
     		}
     		

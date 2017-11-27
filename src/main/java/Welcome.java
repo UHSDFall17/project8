@@ -33,7 +33,7 @@ switch (user_input) {
 			case 2:
 				Team t = new Team();
 
-				t.team();
+				t.Team();
 
 				break;
 
