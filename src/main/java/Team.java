@@ -97,7 +97,7 @@ public class Team {
 		    Statement s = conn.createStatement();
     		s.executeUpdate(values);
     		conn.close();
-    		addMembersToTeam();
+
 		  }
 		  
 		  else if (input == 2) {
@@ -125,22 +125,18 @@ public class Team {
 		  {
 		   System.out.println("---Create Team---");
 		   getInput();
-		   System.out.println(teamname);
-		   System.out.println(teamdesc);
-		   System.out.println("back");
 		   Class.forName("com.mysql.jdbc.Driver");
 			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/Trello","root","root");
 		    values = "INSERT INTO team (team_name,team_desc) " + "VALUES ('" +teamname+ "', '" +teamdesc+"')";
 		    Statement s = conn.createStatement();
     		s.executeUpdate(values);
-    		String params="update team set t_board_name = '" +title+ "' where team_name = '"+teamname+"'";
+    		String params="update team set t_board_name = '" +title+ "' where team_name = '" +teamname+ "'";
     		Statement s1 = conn.createStatement();
     		s1.executeUpdate(params);
     		String params1="update board set b_team_name='"+teamname+"' where boardname='"+title+"'";
     		Statement s2 = conn.createStatement();
     		s2.executeUpdate(params1);
     		conn.close();
-    		addMembersToTeam();
 		  }
 		  
 		  else if (input == 2) {
@@ -165,19 +161,25 @@ public class Team {
   
  public void addMembersToTeam()
  {  
-	 Scanner scan = new Scanner (System.in);
+	 try{
+		 Scanner scan1 = new Scanner (System.in);
+	 
   ArrayList<String> members = new ArrayList<String>(); 
    System.out.println("Press/n 1.to add members to Team /n  Press 2. to add members to Business Team ");
-   int input = scan.nextInt();
-   scan.nextLine(); 
+   System.out.println("----------	");
+   int input = scan1.nextInt(); 
    System.out.println("Enter Team Name:");
-   String teamName  = scan.nextLine();
+   String teamName  = scan1.nextLine();
    String membername;
    System.out.println("Enter Member Name:");
-   membername  = scan.nextLine();
+   membername  = scan1.nextLine();
          members.add(membername); 
          addToDatabase(membername,teamName,input);
     System.out.println("Members added to the team successfully!");
+	 }
+	 catch(Exception e){
+		 System.out.println(e);
+	 }
    
   }
 
