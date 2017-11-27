@@ -12,31 +12,23 @@ public class ViewBoard {
 	public void displayBoards(String value) {
 	
 
-		System.out.println("Do you wish to open board");
+		
        
 		String boardname;
-		String open =scan.nextLine();
-		if (open.equals("yes")) {
-			System.out.println("Please enter the name of the board which you wish to open");
-			boardname =scan.nextLine();
-			openBoard(boardname,value);
-		} else
-			System.out.print("Back functionality");
+	
+	
+		
+			openBoard(value);
+		
 	}
 
-	private void openBoard(String boardname,String value) {
+	private void openBoard(String value) {
 
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/Trello","root","root");
 			Statement s = conn.createStatement();
-			ResultSet rs=s.executeQuery("SELECT * FROM board");
-		      
-			while(rs.next()){
-	        String name = rs.getString("boardname");
-	         System.out.println("Boardname: " + name);
-			}
-			System.out.println(value);
+			
 	         ResultSet rs1=s.executeQuery("SELECT * FROM board WHERE b_company_name = '"+value+"'");
 		      while(rs1.next()){
 		    	  star = rs1.getString("boardname");

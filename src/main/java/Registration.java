@@ -62,7 +62,7 @@ public class Registration {
 				scan.close();
 			}
 			else if(ans.equalsIgnoreCase("no")){
-				String parameters="Insert into Users (Username, Email, Password)"  + "VALUES ('" +Username+ "', '" +Email+"','" +Password+"')";
+				String parameters="Insert into Users (Username, Email, Password,company_name)"  + "VALUES ('" +Username+ "', '" +Email+"','" +Password+"','NA')";
 				Statement s = conn.createStatement();
 				s.executeUpdate(parameters);
 				x="Registration Successfull!!";
