@@ -1,6 +1,9 @@
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class Registration {
@@ -40,11 +43,25 @@ public class Registration {
 				x="Passwords don't match!";
 				
 			}
+			System.out.println("Do you work at a corporate office??");
+			String ans=scan.nextLine();
+			if(ans.equalsIgnoreCase("yes")){
+				System.out.println("Enter the company's name");
+				String company_name=scan.nextLine();
+				System.out.println("Enter the begin year in yyyy format");
+				int  begin_year=scan.nextInt();
+				
+				
+				String parameters="Insert into Users (Username, Email, Password, company_name, begin_year, active)"  + "VALUES ('" +Username+ "', '" +Email+"','" +Password+"','" +company_name+"','" +begin_year+"','yes')";
+				Statement s = conn.createStatement();
+				s.executeUpdate(parameters);
+			}
+			else if(ans.equalsIgnoreCase("no")){
+				String parameters="Insert into Users (Username, Email, Password)"  + "VALUES ('" +Username+ "', '" +Email+"','" +Password+"')";
+				Statement s = conn.createStatement();
+				s.executeUpdate(parameters);
+			}
 			
-			
-			String parameters="Insert into Users (Username, Email, Password)"  + "VALUES ('" +Username+ "', '" +Email+"','" +Password+"')";
-			Statement s = conn.createStatement();
-			s.executeUpdate(parameters);
 			x="Registration Successfull!!";
 			System.out.println("Registration Successfull!!");
 			scan.close();
