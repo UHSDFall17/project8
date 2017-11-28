@@ -36,7 +36,7 @@ public class ViewBoard {
 		 
 	      }
 		      Card c=new Card();
-		      c.menu();
+		      c.menu(value);
 
 		
 

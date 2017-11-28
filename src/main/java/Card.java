@@ -46,7 +46,7 @@ public class Card {
     	 return Description;
       }
 
-  	public void menu() throws ClassNotFoundException, SQLException {
+  	public void menu(String value) throws ClassNotFoundException, SQLException {
   		System.out.println("------Viewing Cards------\n");
   Scanner input=new Scanner(System.in);
   		
@@ -55,13 +55,13 @@ public class Card {
   			System.out.println("1) Display the existing cards.\n"
   					+ "2) Create a new card.\n"
   					+ "3) Modify an existing card.\n"
- 
+  					+ "4)Exit\n"
   					+ "Enter the number for the option that you want: ");
-  			chooseOption( input.nextInt());
+  			chooseOption(value, input.nextInt());
   			String answer = input.nextLine();
  
   	}
-  	private void chooseOption(int number) throws ClassNotFoundException, SQLException {
+  	private void chooseOption(String val,int number) throws ClassNotFoundException, SQLException {
   		Class.forName("com.mysql.jdbc.Driver");
   		 Scanner input=new Scanner(System.in);
 		Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/Trello","root","root");
@@ -76,13 +76,25 @@ public class Card {
 		
 			break;
 		case 2:
+			
+			Statement s3 = conn.createStatement();
+			System.out.println("Boards available");
+			 ResultSet rs1=s3.executeQuery("SELECT * FROM board WHERE b_company_name = '"+val+"'");
+		      while(rs1.next()){
+		    	  String star = rs1.getString("boardname");
+		    	  System.out.println("Boardname: " + star);
+		 
+	      }
+			System.out.println("Select the board for which you want to create a card");
+			String boardname=input.next();
+			
 			System.out.println("Please enter the card name: ");
-			this.cardname = input.nextLine();
+			this.cardname = input.next();
 			System.out.println("Please enter a description of the card: ");
-			this.description = input.nextLine();
+			this.description = input.next();
 			System.out.println("Enter any comments for the card: ");
-			this.comments = input.nextLine();
-			String parameters="Insert into card (card_name,card_description,comments)"  + "VALUES ('" +cardname+ "', '" +description+"','" +comments+"')";
+			this.comments = input.next();
+			String parameters="Insert into card (card_name,card_description,comments, c_board_name)"  + "VALUES ('" +cardname+ "', '" +description+"','" +comments+"', '"+boardname+"')";
 			Statement s1 = conn.createStatement();
 			s1.executeUpdate(parameters);
 			break;
@@ -105,6 +117,7 @@ public class Card {
 				s2.executeUpdate(parameters1);
 			}
 			else if(change==2){
+			
 				System.out.println("Enter the new value");
 				String changed_value=input.next();
 				String parameters1="update  card set card_description='" +changed_value+ "' where card_name='"+cardname+"'";
@@ -121,7 +134,8 @@ public class Card {
 			
 			
 			break;
-		
+		case 4:
+			System.exit(1);
 		default:
 			System.out.println("Invalid option.");
 			break;
