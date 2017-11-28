@@ -49,9 +49,7 @@ public class Card {
   	public void menu() throws ClassNotFoundException, SQLException {
   		System.out.println("------Viewing Cards------\n");
   Scanner input=new Scanner(System.in);
-  		System.out.println("Please enter the name of  the card: ");
-  		String card= input.nextLine();
-  		String answer;
+  		
 
 
   			System.out.println("1) Display the existing cards.\n"
@@ -59,12 +57,13 @@ public class Card {
   					+ "3) Modify an existing card.\n"
  
   					+ "Enter the number for the option that you want: ");
-  			chooseOption(card, input.nextInt());
-  			answer = input.nextLine();
+  			chooseOption( input.nextInt());
+  			String answer = input.nextLine();
  
   	}
-  	private void chooseOption(String card, int number) throws ClassNotFoundException, SQLException {
+  	private void chooseOption(int number) throws ClassNotFoundException, SQLException {
   		Class.forName("com.mysql.jdbc.Driver");
+  		 Scanner input=new Scanner(System.in);
 		Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/Trello","root","root");
 		switch(number) {
 		case 1:
@@ -83,15 +82,6 @@ public class Card {
 			this.description = input.nextLine();
 			System.out.println("Enter any comments for the card: ");
 			this.comments = input.nextLine();
-			System.out.println("Assign a due date for this card? Y/N: ");
-			String answer = input.nextLine();
-			if(answer == "Y" || answer == "y") {
-				System.out.println("Enter the due date in 'YYYYY-MM-DD' form: ");
-				this.date = input.nextLine();
-			}
-			else {
-				this.date = null;
-			}
 			String parameters="Insert into card (card_name,card_description,comments)"  + "VALUES ('" +cardname+ "', '" +description+"','" +comments+"')";
 			Statement s1 = conn.createStatement();
 			s1.executeUpdate(parameters);
@@ -99,14 +89,36 @@ public class Card {
 		case 3:
 			System.out.println("Provide the card name that you wish to modify: ");
 			this.cardname = input.nextLine();
+			System.out.println(cardname);
 			System.out.println("What part do you wish to modify?\n"
 					+ "1) The card name.\n"
 					+ "2) The card description.\n"
 					+ "3) The card comments.\n"
 					+ "Enter a number: ");
-			String parameters1="Update  card set card_name='" +cardname+ "'";
-			Statement s2 = conn.createStatement();
-			s2.executeUpdate(parameters1);
+			int change=input.nextInt();
+			if(change==1){
+				System.out.println("Enter the new value");
+				String changed_value=input.next();
+				System.out.println(changed_value);
+				String parameters1="update card set card_name = '" +changed_value+ "' where card_name = '" +cardname+ "'";;
+				Statement s2 = conn.createStatement();
+				s2.executeUpdate(parameters1);
+			}
+			else if(change==2){
+				System.out.println("Enter the new value");
+				String changed_value=input.next();
+				String parameters1="update  card set card_description='" +changed_value+ "' where card_name='"+cardname+"'";
+				Statement s2 = conn.createStatement();
+				s2.executeUpdate(parameters1);
+			}
+			else{
+				System.out.println("Enter the new value");
+				String changed_value=input.next();
+				String parameters1="update  card set comments='" +changed_value+ "' where card_name='"+cardname+"'";
+				Statement s2 = conn.createStatement();
+				s2.executeUpdate(parameters1);
+			}
+			
 			
 			break;
 		
