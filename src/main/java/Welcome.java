@@ -9,7 +9,7 @@ public class Welcome {
 int user_input;
 Scanner scan=new Scanner(System.in);
 public void Welcome(String Username) throws ClassNotFoundException, SQLException{
-	do{
+
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/Trello","root","root");
 	String parameters ="Select company_name from users where Username = '" +Username+ "'";
@@ -55,7 +55,7 @@ switch (user_input) {
 			break;
 		}
 		
-} while (user_input != 5);
+
 
 }
 }

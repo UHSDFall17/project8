@@ -17,9 +17,9 @@ public class Team {
  {
 	 Scanner scan = new Scanner (System.in);
   System.out.println("Please enter Team Name:");
-   teamname  = scan.nextLine();
+   teamname  = scan.next();
   System.out.println("Please enter Team Description:");
-       teamdesc  = scan.nextLine();
+       teamdesc  = scan.next();
        scan.close();
  }
  
@@ -96,6 +96,7 @@ public class Team {
 		    values = "INSERT INTO team (team_name,team_desc) " + "VALUES ('" +teamname+ "', '" +teamdesc+"')";
 		    Statement s = conn.createStatement();
     		s.executeUpdate(values);
+    		System.out.println("inserted successfully");
     		conn.close();
 
 		  }
@@ -125,6 +126,8 @@ public class Team {
 		  {
 		   System.out.println("---Create Team---");
 		   getInput();
+		   System.out.println(teamname);
+		   System.out.println(teamdesc);
 		   Class.forName("com.mysql.jdbc.Driver");
 			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/Trello","root","root");
 		    values = "INSERT INTO team (team_name,team_desc) " + "VALUES ('" +teamname+ "', '" +teamdesc+"')";
@@ -136,6 +139,7 @@ public class Team {
     		String params1="update board set b_team_name='"+teamname+"' where boardname='"+title+"'";
     		Statement s2 = conn.createStatement();
     		s2.executeUpdate(params1);
+    		System.out.println("inserted successfully");
     		conn.close();
 		  }
 		  

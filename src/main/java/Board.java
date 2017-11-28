@@ -58,7 +58,7 @@ public class Board {
 
     	}
     		catch(Exception e){ System.out.println(e);} 
-    		inputReader.close();
+ 
     	}
 
 }
