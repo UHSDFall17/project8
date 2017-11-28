@@ -1,10 +1,18 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import org.w3c.dom.Comment;
 
 public class Card {
       String Title,Description;
       int CardNumber=0;
+      String cardname, description, comments, date;
+      Scanner input=new Scanner(System.in);
       ArrayList<Comment> Comments=new ArrayList<Comment>();
       public Card(String title,String descrption,Comment comment){
     	  this.Title=title;
@@ -37,5 +45,75 @@ public class Card {
       public String getCardDescription(){
     	 return Description;
       }
+
+  	public void menu() throws ClassNotFoundException, SQLException {
+  		System.out.println("------Viewing Cards------\n");
+  Scanner input=new Scanner(System.in);
+  		System.out.println("Please enter the name of  the card: ");
+  		String card= input.nextLine();
+  		String answer;
+
+
+  			System.out.println("1) Display the existing cards.\n"
+  					+ "2) Create a new card.\n"
+  					+ "3) Modify an existing card.\n"
+ 
+  					+ "Enter the number for the option that you want: ");
+  			chooseOption(card, input.nextInt());
+  			answer = input.nextLine();
+ 
+  	}
+  	private void chooseOption(String card, int number) throws ClassNotFoundException, SQLException {
+  		Class.forName("com.mysql.jdbc.Driver");
+		Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/Trello","root","root");
+		switch(number) {
+		case 1:
+		String values="Select card_name from card ";
+		Statement s = conn.createStatement();
+		 ResultSet rs=s.executeQuery(values);
+		    String value = null;
+			while (rs.next())
+		        value = rs.getString("card_name");
+		
+			break;
+		case 2:
+			System.out.println("Please enter the card name: ");
+			this.cardname = input.nextLine();
+			System.out.println("Please enter a description of the card: ");
+			this.description = input.nextLine();
+			System.out.println("Enter any comments for the card: ");
+			this.comments = input.nextLine();
+			System.out.println("Assign a due date for this card? Y/N: ");
+			String answer = input.nextLine();
+			if(answer == "Y" || answer == "y") {
+				System.out.println("Enter the due date in 'YYYYY-MM-DD' form: ");
+				this.date = input.nextLine();
+			}
+			else {
+				this.date = null;
+			}
+			String parameters="Insert into card (card_name,card_description,comments)"  + "VALUES ('" +cardname+ "', '" +description+"','" +comments+"')";
+			Statement s1 = conn.createStatement();
+			s1.executeUpdate(parameters);
+			break;
+		case 3:
+			System.out.println("Provide the card name that you wish to modify: ");
+			this.cardname = input.nextLine();
+			System.out.println("What part do you wish to modify?\n"
+					+ "1) The card name.\n"
+					+ "2) The card description.\n"
+					+ "3) The card comments.\n"
+					+ "Enter a number: ");
+			String parameters1="Update  card set card_name='" +cardname+ "'";
+			Statement s2 = conn.createStatement();
+			s2.executeUpdate(parameters1);
+			
+			break;
+		
+		default:
+			System.out.println("Invalid option.");
+			break;
+		}	
+	}
       
 }

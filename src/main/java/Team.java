@@ -126,8 +126,6 @@ public class Team {
 		  {
 		   System.out.println("---Create Team---");
 		   getInput();
-		   System.out.println(teamname);
-		   System.out.println(teamdesc);
 		   Class.forName("com.mysql.jdbc.Driver");
 			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/Trello","root","root");
 		    values = "INSERT INTO team (team_name,team_desc) " + "VALUES ('" +teamname+ "', '" +teamdesc+"')";

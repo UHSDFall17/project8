@@ -33,8 +33,10 @@ public class ViewBoard {
 		      while(rs1.next()){
 		    	  star = rs1.getString("boardname");
 		    	  System.out.println("Boardname: " + star);
-		      
+		 
 	      }
+		      Card c=new Card();
+		      c.menu();
 
 		
 
