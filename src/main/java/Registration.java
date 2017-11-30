@@ -76,6 +76,7 @@ public class Registration {
 		}
 		catch(Exception e){
 			System.out.println(e);
+			Register();
 		}
 		return x;
 	}
