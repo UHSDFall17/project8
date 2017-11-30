@@ -21,7 +21,7 @@ public class Login {
 		    if(rs.next())
 		    {
 		    	x="Login Successfull!";
-		    	System.out.println("Login Successful!");
+		    	System.out.println("Login Successfull!");
 		    	 Welcome w=new Welcome();
 		    	 w.Welcome(Username);
 		    }

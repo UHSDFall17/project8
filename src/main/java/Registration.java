@@ -112,7 +112,7 @@ public class Registration {
 
 		
 	}
-	private boolean checkEmailRegularExpression(String Email){
+	public boolean checkEmailRegularExpression(String Email){
 		String reg_email="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
 		boolean b = Email.matches(reg_email);
 		return b;
